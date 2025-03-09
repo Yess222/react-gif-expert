@@ -2,7 +2,7 @@ import { useState } from "react"
 
 export const AddCategory = ({ onNewCategory }) => {
     
-    const [inputValue, setInputValue] = useState('One Punch');
+    const [inputValue, setInputValue] = useState('');
     
     const onInputChange = (event) =>{
         // console.log(event.target.value);
@@ -14,12 +14,13 @@ export const AddCategory = ({ onNewCategory }) => {
         if ( inputValue.trim().length <= 1) return;
 
         //setCategories( categories => [ inputValue, ...categories ] );
-        setInputValue('');
         onNewCategory( inputValue.trim() );
+        setInputValue('');
+
     }
 
     return (
-        <form onSubmit={ onSubmit }>
+        <form onSubmit={ onSubmit } aria-label="form">
             <input 
                 type="text" 
                 placeholder="Buscar Gifs"
